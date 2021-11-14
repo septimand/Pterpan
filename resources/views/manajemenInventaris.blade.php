@@ -46,7 +46,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-10 mb-3 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" href="#"> &nbsp&nbsp&nbsp MANAJEMEN DATA > PENGGUNA</a>
+          <a class="nav-link active" href="#"> &nbsp&nbsp&nbsp MANAJEMEN DATA > INVENTARIS > UNIT</a>
         </li>
        </ul>
     </div>
@@ -71,25 +71,25 @@
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link active" href="tambahPengguna">
+            <a class="nav-link " href="/tambahPengguna">
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span data-feather="users"></span>
               Pengguna
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="unit">
+            <a class="nav-link" href="/unit">
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span data-feather="tag"></span>
               Unit
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="kategori">
+            <a class="nav-link" href="/kategori">
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span data-feather="grid"></span>
               Kategori
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="inventaris">
+            <a class="nav-link active" href="/inventaris">
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span data-feather="archive"></span>
               Inventaris
             </a>
@@ -104,54 +104,48 @@
         <div class="row">
             <div class="col-11"><br></div>
             <div class="col"><a class="btn btn-primary mt-2 mb-2" href="#" role="button" data-bs-toggle="modal" data-bs-target="#tambahPengguna">+ Tambah </a></div>
-            <div class="col"> </div>   
+            <div class="col"> </div>
             <div class="col"><form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form></div>
         </div>
-        <form method="post" action="/tambahPengguna/simpan">
+        <form method="post" action="/ManajemenInventaris/simpan">
             <div class="modal fade" id="tambahPengguna" tabindex="-1" aria-labelledby="tambahPenggunalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="title" id="tambahPenggunaLabel" >Tambah Pengguna</h5>
+                    <h5 class="title" id="tambahPenggunaLabel" >Tambah Inventaris</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     <input type="hidden" name="_token" value="{{ csrf_token() }}" />
                 </div>
                 <div class="modal-body">
-                    <label for="#" >E-mail</label>
-                    <input type="email" class="form-control mb-2" name="email" placeholder="Masukkan E-mail">
-                    <label for="#">Password</label>
-                    <input type="password" class="form-control col-sm-1" name="password" placeholder="Masukkan Password">
+                    <input type="hidden" class="form-control mb-2" name="id_unit" value='<?php  echo $_GET["id"]?>' >
+                    <label for="#" >Kode Barcode</label>
+                    <input type="text" class="form-control mb-2" name="kode_barcode" placeholder="Masukkan Kode">
                     <label for="#">Nama</label>
-                    <input type="text" class="form-control col-sm-1" name="nama_user" placeholder="Masukkan Nama">
-                    <label for="#">Telp.</label>
-                    <input type="number" class="form-control col-sm-1" name="no_telp" placeholder="Masukkan Nomor Telepon">
-                    <label for="#">Unit</label>
-                    <input type="text" class="form-control col-sm-1" name="id_unit" placeholder="Pilih Unit">
-                    <label for="#">Tanggal Lahir</label>
-                    <input type="date" class="form-control col-sm-1" name="tgl_lahir" >
-                    <label for="#">Jenis Kelamin</label><br>
-                    <input class="form-check-input" type="radio" name="jenis_kelamin" id="flexRadioDefault1" value="Laki-Laki">
+                    <input type="text" class="form-control col-sm-1" name="nama_inventaris" placeholder="Masukkan Nama Inventaris">
+                    <label for="#">Jumlah</label>
+                    <input type="text" class="form-control col-sm-1" name="jumlah" placeholder="Masukkan Jumlah">
+                    <label for="#">Harga</label>
+                    <input type="number" class="form-control col-sm-1" name="harga" placeholder="Masukkan Harga">
+                    <label for="#">Kategori</label>
+                    <input type="text" class="form-control col-sm-1" name="nama_kategori" placeholder="Pilih Kategori">
+                    <label for="#">Tanggal Beli</label>
+                    <input type="date" class="form-control col-sm-1" name="tgl_inventaris" >
+                    <label for="#">Deskripsi</label>
+                    <input type="text" class="form-control col-sm-1" name="deskripsi_inventaris" placeholder="Masukkan Deskripsi">
+                    <label for="#">Status</label><br>
+                    <input class="form-check-input" type="radio" name="status_inventaris" id="flexRadioDefault1" value="Baik">
                         <label class="form-check-label col-2" for="flexRadioDefault1">
-                            Laki-Laki
+                            Baik
                         </label>
-                    <input class="form-check-input" type="radio" name="jenis_kelamin" id="flexRadioDefault1" value="Perempuan">
+                    <input class="form-check-input" type="radio" name="status_inventaris" id="flexRadioDefault1" value="Rusak/Hilang">
                         <label class="form-check-label" for="flexRadioDefault1">
-                            Perempuan
+                            Rusak/Hilang
                         </label><br>
-                    <label for="#">Hak Akses</label><br>
-                    <input class="form-check-input" type="radio" name="hak_akses" id="flexRadioDefault1" value="Admin">
-                        <label class="form-check-label col-2" for="flexRadioDefault1">
-                            Admin
-                        </label>
-                    <input class="form-check-input" type="radio" name="hak_akses" id="flexRadioDefault1" value="Pengguna">
-                        <label class="form-check-label" for="flexRadioDefault1">
-                            Pengguna
-                        </label><br>
-                    <label for="#" class="col-2">Foto</label>
-                    <input type="file" name="gambar_user">
+                    <label for="#" class="col-2">Gambar</label><br>
+                    <input type="file" name="gambar_inventaris">
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
@@ -165,41 +159,42 @@
                 <thead>
                     <tr>
                     <th scope="col">No</th>
-                    <th scope="col">Email</th>
-                    <th scope="col">Password</th>
+                    <th scope="col">Kode Barcode</th>
                     <th scope="col">Nama</th>
-                    <th scope="col">Unit</th>
-                    <th scope="col">Tgl Lahir</th>
-                    <th scope="col">Jenis Kelamin</th>
-                    <th scope="col">Telp</th>
-                    <th scope="col">Hak Akses</th>
+                    <th scope="col">Kategori</th>
+                    <th scope="col">Deskripsi</th>
                     <th scope="col">Gambar</th>
+                    <th scope="col">Status </th>
+                    <th scope="col">Jumlah</th>
+                    <th scope="col">Harga</th>
+                    <th scope="col">Tgl Beli </th>
                     <th scope="col">Aksi</th>
                     </tr>
                 </thead>
                 @php
                     $no =1;
                 @endphp
-                @foreach($users as $u)
+                @foreach($iven as $i)
                 <tbody>
                     <tr>
                     <th scope="row">{{ $no++}}</th>
-                    <td>{{$u -> email}}</td>
-                    <td>{{$u -> password}}</td>
-                    <td>{{$u -> nama_user}}</td>
-                    <td>{{$u -> id_unit}}</td>
-                    <td>{{$u -> tgl_lahir}}</td>
-                    <td>{{$u -> jenis_kelamin}}</td>
-                    <td>{{$u -> no_telp}}</td>
-                    <td>{{$u -> hak_akses}}</td>
-                    <td>{{$u -> gambar_user}}</td>
+                    <td>{{$i -> kode_barcode}}</td>
+                    <td>{{$i -> nama_inventaris}}</td>
+                    <td>{{$i -> nama_kategori}}</td>
+                    <td>{{$i -> deskripsi_inventaris}}</td>
+                    <td>{{$i -> gambar_inventaris}}</td>
+                    <td>{{$i -> status_inventaris}}</td>
+                    <td>{{$i -> jumlah}}</td>
+                    <td>{{$i -> harga}}</td>
+                    <td>{{$i -> tgl_inventaris}}</td>
                     <td>
-                        <a class="btn btn-warning" href="tambahPengguna/editPengguna/{{$u->email}}" role="button" ><span data-feather="edit"></span></a>
-                        <a class="btn btn-danger" href="tambahPengguna/delete/{{$u->email}}" role="button"><span data-feather="trash-2"></span></a>
+                        <a class="btn btn-primary" href="#" role="button" >Cetak</span></a>
+                        <!--a class="btn btn-warning" href="#" role="button" data-bs-toggle="modal" data-bs-target="#editInventaris"><span data-feather="edit"></span></a-->
+                        <a class="btn btn-warning" href="/inventaris/manajemenInventaris/{{$i->id_unit}}/editInventaris/{{$i->kode_barcode}}" role="button" ><span data-feather="edit"></span></a-->
+                        <a class="btn btn-danger" href="/inventaris/manajemenInventaris/delete/{{$i->kode_barcode}}" role="button"><span data-feather="trash"></span></a>
                     </td>
                     </tr>
-                </tbody>
-                @endforeach
+                </tbody>@endforeach
             </table>
         </div>
 </body>

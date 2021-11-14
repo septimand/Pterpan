@@ -46,7 +46,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-10 mb-3 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" href="#"> &nbsp&nbsp&nbsp DASHBOARD</a>
+          <a class="nav-link active" href="#"> &nbsp&nbsp&nbsp MANAJEMEN DATA > INVENTARIS</a>
         </li>
        </ul>
     </div>
@@ -59,13 +59,13 @@
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="dashboard">
+            <a class="nav-link " aria-current="page" href="dashboard">
             &nbsp&nbsp&nbsp<span data-feather="layers"></span>
               Dashboard
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="#">
+            <a class="nav-link active" href="#">
             &nbsp&nbsp&nbsp<span data-feather="folder"></span>
               Manajemen Data
             </a>
@@ -77,7 +77,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="unit">
+            <a class="nav-link " href="unit">
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span data-feather="tag"></span>
               Unit
             </a>
@@ -89,14 +89,24 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="inventaris">
+            <a class="nav-link active" href="#">
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span data-feather="archive"></span>
               Inventaris
             </a>
           </li>
         </ul>
     </nav>
-
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <div class="container">
+              <table class="table table-hover">
+                @foreach($unit as $un)
+                <tbody>
+                    <br><a class="btn btn-warning" href="inventaris/manajemenInventaris/{{$un->id_unit}}/?id={{$un->id_unit}}" role="button" >{{$un -> nama_unit}}</a><br> &nbsp&nbsp&nbsp&nbsp
+                </tbody>
+                @endforeach
+            </table>
+    </div>
+<main>
 
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>

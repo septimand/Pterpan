@@ -46,7 +46,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-10 mb-3 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link active" href="#"> &nbsp&nbsp&nbsp DASHBOARD</a>
+          <a class="nav-link active" href="#"> &nbsp&nbsp&nbsp MANAJEMEN DATA > KATEGORI</a>
         </li>
        </ul>
     </div>
@@ -59,13 +59,13 @@
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link active" aria-current="page" href="dashboard">
+            <a class="nav-link " aria-current="page" href="dashboard">
             &nbsp&nbsp&nbsp<span data-feather="layers"></span>
               Dashboard
             </a>
           </li>
           <li class="nav-item ">
-            <a class="nav-link" href="#">
+            <a class="nav-link active" href="#">
             &nbsp&nbsp&nbsp<span data-feather="folder"></span>
               Manajemen Data
             </a>
@@ -77,13 +77,13 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="unit">
+            <a class="nav-link " href="unit">
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span data-feather="tag"></span>
               Unit
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="kategori">
+            <a class="nav-link active" href="kategori">
             &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp&nbsp<span data-feather="grid"></span>
               Kategori
             </a>
@@ -97,8 +97,64 @@
         </ul>
     </nav>
 
-
-
+    <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <div class="container">
+        <div class="row">
+            <div class="col-11"><br></div>
+            <div class="col"><a class="btn btn-primary mt-2 mb-2" href="#" role="button" data-bs-toggle="modal" data-bs-target="#tambahUnit">+ Tambah </a></div>
+            <div class="col"> </div>   
+            <div class="col"><form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form></div>
+        </div>
+        <form method="post" action="/kategori/simpan">
+            <div class="modal fade" id="tambahUnit" tabindex="-1" aria-labelledby="tambahUnitlLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="title" id="tambahUnitLabel" >Tambah Kategori</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <input type="hidden" name="_token" value="{{ csrf_token() }}" />
+                    </div>
+                    <div class="modal-body">
+                        <label for="#">Nama Kategori</label>
+                        <input type="text" class="form-control col-sm-1" name="nama_kategori" placeholder="Masukkan Nama Kategori">
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
+                        <button type="submit" class="btn btn-primary" value="simpan">Simpan</button>
+                    </div>
+                </div>
+            </div>
+            </div>
+            </form>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                    <th scope="col">No</th>
+                    <th scope="col">Nama Kategori</th>
+                    <th scope="col">Aksi</th>
+                    </tr>
+                </thead>
+                @php
+                    $no =1;
+                @endphp
+                @foreach($kg as $un)
+                <tbody>
+                    <tr>
+                    <th scope="row">{{ $no++}}</th>
+                    <td>{{$un -> nama_kategori}}</td>
+                    <td>
+                        <a class="btn btn-warning" href="/kategori/editKategori/{{$un->id_kategori}}" role="button" ><span data-feather="edit"></span></a>
+                        <a class="btn btn-danger" href="/kategori/delete/{{$un->id_kategori}}" role="button"><span data-feather="trash-2"></span></a>
+                    </td>
+                    </tr>
+                </tbody>
+                @endforeach
+            </table>
+<main>
+    </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="/js/dashboard.js"></script>
   </body>
