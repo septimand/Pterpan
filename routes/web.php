@@ -1,5 +1,7 @@
 <?php
-
+use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,8 +14,17 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('login');
 });
+//Route::get('/postlogin','LoginController@index');
+Route::post('/postlogin','Auth\LoginController@postlogin')->name('postlogin');
+Route::get('/logout','Auth\LoginController@logout')->name('logout');
+
+Route::group(['middleware' => ['auth','role:admin']],function(){
+    Route::get('/admin', 'AdminController@index')->name('admin');
+});
+
+Route::get('/admin/dashboard', '\App\Http\Controllers\AdminController@index');
 
 Route::get('/dashboard', 'DashboardController@dashboard');
 Route::get('/tambahPengguna', 'TambahController@tambahPengguna');
@@ -43,3 +54,11 @@ Route::post('/ManajemenInventaris/simpan/', 'InventarisController@simpan');
 Route::get('/inventaris/manajemenInventaris/{id_unit}/editInventaris/{kode_barcode}', 'InventarisController@editInventaris');
 Route::post('/manajemenInventaris/update','InventarisController@update');
 Route::get('/inventaris/manajemenInventaris/delete/{kode_barcode}','InventarisController@delete');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
