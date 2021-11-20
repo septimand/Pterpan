@@ -16,7 +16,7 @@ use App\Http\Controllers\Controller;
 Route::get('/', function () {
     return view('login');
 });
-//Route::get('/postlogin','LoginController@index');
+Route::get('/postlogin','Auth\LoginController@index');
 Route::post('/postlogin','Auth\LoginController@postlogin')->name('postlogin');
 Route::get('/logout','Auth\LoginController@logout')->name('logout');
 

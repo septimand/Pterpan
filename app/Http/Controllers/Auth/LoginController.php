@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Foundation\Auth\AuthenticatesUsers;
+//use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class LoginController extends Controller
 {
@@ -40,14 +41,22 @@ class LoginController extends Controller
     }
     public function postlogin (Request $request){
         $input=$request->all();
-        if(null !==(Auth::attempt(array('email' => $input['email'], 'password' => $input['password'])))){
-            if(Auth::user()->hasRole=='admin'){
-                return redirect('admin');
-            }else if(Auth::user()->hasRole=='pengguna'){
-                return redirect('pengguna');
+        $users = DB::table('users')->where('email',$input['email'])->where('password', $input['password'])
+        ->get();
+        //$unit = DB::table('unit')->where('id_unit',$id)->get();
+        foreach ($users as $user){
+            $role = $user->role;
+            if($user->role == 'admin'){
+                return view('admin');
+                //echo("oke");
+            }else if($user->role=='pengguna'){
+                return view('pengguna');
+            }else{
+                //return redirect('login');
+                echo("oit");
             }
         }
-        echo("terjadi kesalahan");
+
     }
 
     public function logout (Request $request){
