@@ -42,4 +42,7 @@ Route::get('/inventaris/manajemenInventaris/{id_unit}', 'InventarisController@vi
 Route::post('/ManajemenInventaris/simpan/', 'InventarisController@simpan');
 Route::get('/inventaris/manajemenInventaris/{id_unit}/editInventaris/{kode_barcode}', 'InventarisController@editInventaris');
 Route::post('/manajemenInventaris/update','InventarisController@update');
-Route::get('/inventaris/manajemenInventaris/delete/{kode_barcode}','InventarisController@delete');
+Route::get('/inventaris/manajemenInventaris/delete/{kode_barcode}/{id_unit}','InventarisController@delete');
+
+
+Route::get('/qrcode/{id}', 'InventarisController@generateQrCode');

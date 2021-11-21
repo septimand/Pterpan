@@ -103,9 +103,11 @@
     <div class="container">
         <div class="row">
             <div class="col-11"><br></div>
-            <div class="col"><a class="btn btn-primary mt-2 mb-2" href="#" role="button" data-bs-toggle="modal" data-bs-target="#tambahPengguna">+ Tambah </a></div>
-            <div class="col"> </div>
-            <div class="col"><form class="d-flex">
+            <div class="col"><a class="btn btn-info " href="#" role="button" data-bs-toggle="modal" data-bs-target="#tambahPengguna">+ Tambah </a></div>
+            <div class="col"></div>
+            <div class="col"><a class="btn btn-info" href="#" role="button" >Cetak PDF</a> &nbsp&nbsp
+            <a class="btn btn-info" href="#" role="button" >Cetak XLS</a></div> &nbsp&nbsp
+            <div class="col"><form class="d-flex align-items-end">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
             </form></div>
@@ -155,7 +157,7 @@
             </div>
             </div>
             </form>
-            <table class="table table-hover">
+            <table class="table table-hover text-center">
                 <thead>
                     <tr>
                     <th scope="col">No</th>
@@ -168,7 +170,7 @@
                     <th scope="col">Jumlah</th>
                     <th scope="col">Harga</th>
                     <th scope="col">Tgl Beli </th>
-                    <th scope="col">Aksi</th>
+                    <th scope="col"> Aksi</th>
                     </tr>
                 </thead>
                 @php
@@ -188,15 +190,34 @@
                     <td>{{$i -> harga}}</td>
                     <td>{{$i -> tgl_inventaris}}</td>
                     <td>
-                        <a class="btn btn-primary" href="#" role="button" >Cetak</span></a>
+                        <a class="btn btn-secondary" href="inventaris/manajemenInventaris/{{$i->id_unit}}/?id={{$i->kode_barcode}}" role="button" data-bs-toggle="modal" data-bs-target="#barcodeModal<?php echo $no  ?>">Cetak QR Code</span></a>&nbsp
                         <!--a class="btn btn-warning" href="#" role="button" data-bs-toggle="modal" data-bs-target="#editInventaris"><span data-feather="edit"></span></a-->
-                        <a class="btn btn-warning" href="/inventaris/manajemenInventaris/{{$i->id_unit}}/editInventaris/{{$i->kode_barcode}}" role="button" ><span data-feather="edit"></span></a-->
-                        <a class="btn btn-danger" href="/inventaris/manajemenInventaris/delete/{{$i->kode_barcode}}" role="button"><span data-feather="trash"></span></a>
+                        <a class="btn btn-info" href="/inventaris/manajemenInventaris/{{$i->id_unit}}/editInventaris/{{$i->kode_barcode}}" role="button" ><span data-feather="edit"></span></a>&nbsp
+                        <a class="btn btn-danger" href="/inventaris/manajemenInventaris/delete/{{$i->kode_barcode}}/{{$i->id_unit}}/?id={{$i->id_unit}}" role="button"><span data-feather="trash"></span></a>
                     </td>
                     </tr>
+                    <!--QR code-->
+                    <div class="modal fade" id="barcodeModal<?php echo $no  ?>" tabindex="-1" aria-labelledby="barcodeModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="barcodeModalLabel">QR Code</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body text-center">
+                            {!! QrCode::size(250)->generate($i -> kode_barcode); !!}
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="button" class="btn btn-primary">Cetak</button>
+                        </div>
+                        </div>
+                    </div>
+                    </div>
                 </tbody>@endforeach
             </table>
         </div>
+        
 </body>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/feather-icons@4.28.0/dist/feather.min.js" integrity="sha384-uO3SXW5IuS1ZpFPKugNNWqTZRRglnUJK6UAZ/gxOX80nxEkN9NcGZTftn6RzhGWE" crossorigin="anonymous"></script><script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js" integrity="sha384-zNy6FEbO50N+Cg5wap8IKA4M/ZnLJgzc6w2NqACZaK0u0FXfOWRRJOnQtpZun8ha" crossorigin="anonymous"></script><script src="/js/dashboard.js"></script>

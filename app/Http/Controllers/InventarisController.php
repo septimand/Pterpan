@@ -56,6 +56,17 @@ namespace App\Http\Controllers;
         }
         public function delete($kode_barcode) {
             $kg = DB::table('inventaris')->where('kode_barcode',$kode_barcode)->delete();
-            return redirect('/inventaris/manajemenInventaris/{kode_barcode}');
+
+            return redirect('/inventaris/manajemenInventaris/'.$_GET['id'].'/?id='.$_GET['id']);
             }
+
+
+            public function generateQrCode(){
+            $iven = DB::table('inventaris')->where('id_unit',$id)->get();
+            \QrCode::size(500)
+                    ->format('png')
+                    ->generate($data->kode_barcode, public_path('images/'.$request -> id_unit.'.png'));
+
+            //return view('qrCode', ['iven' => $iven]);
+        }
     }

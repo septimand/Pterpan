@@ -98,10 +98,21 @@
     </nav>
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     <div class="container">
+            <div class="row">
+            <div class="col-11"><br></div>
+            <div class="col-8"></div>  
+            <div class="col-4"><form class="d-flex">
+                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form></div>
+            </div>
+            <br><br>
               <table class="table table-hover">
                 @foreach($unit as $un)
                 <tbody>
-                    <br><a class="btn btn-warning" href="inventaris/manajemenInventaris/{{$un->id_unit}}/?id={{$un->id_unit}}" role="button" >{{$un -> nama_unit}}</a><br> &nbsp&nbsp&nbsp&nbsp
+                    <tr>
+                    <a class="btn btn-warning" href="inventaris/manajemenInventaris/{{$un->id_unit}}/?id={{$un->id_unit}}" role="button" >{{$un -> nama_unit}}</a> &nbsp&nbsp&nbsp&nbsp
+                    </tr>
                 </tbody>
                 @endforeach
             </table>

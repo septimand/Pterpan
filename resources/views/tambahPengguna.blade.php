@@ -103,7 +103,7 @@
     <div class="container">
         <div class="row">
             <div class="col-11"><br></div>
-            <div class="col"><a class="btn btn-primary mt-2 mb-2" href="#" role="button" data-bs-toggle="modal" data-bs-target="#tambahPengguna">+ Tambah </a></div>
+            <div class="col"><a class="btn btn-info mt-2 mb-2" href="#" role="button" data-bs-toggle="modal" data-bs-target="#tambahPengguna">+ Tambah </a></div>
             <div class="col"> </div>   
             <div class="col"><form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -194,7 +194,7 @@
                     <td>{{$u -> hak_akses}}</td>
                     <td>{{$u -> gambar_user}}</td>
                     <td>
-                        <a class="btn btn-warning" href="tambahPengguna/editPengguna/{{$u->email}}" role="button" ><span data-feather="edit"></span></a>
+                        <a class="btn btn-info" href="tambahPengguna/editPengguna/{{$u->email}}" role="button" ><span data-feather="edit"></span></a>
                         <a class="btn btn-danger" href="tambahPengguna/delete/{{$u->email}}" role="button"><span data-feather="trash-2"></span></a>
                     </td>
                     </tr>

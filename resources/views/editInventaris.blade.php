@@ -99,7 +99,7 @@
     <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
     @foreach($inv as $i)
         <form method="post" action="/manajemenInventaris/update">{{csrf_field()}}
-            <input type="hidden" class="form-control mb-2" name="kode_barcode" value='{{$i->kode_barcode}}' >
+            <input type="hidden" class="form-control mb-2" name="id_unit" value='{{$i->id_unit}}' >
             <div class="row">
                 <div class="mb-3">
                     <label class="form-label"><br>Kode Barcode</label>

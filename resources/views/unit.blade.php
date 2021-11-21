@@ -101,7 +101,7 @@
     <div class="container">
         <div class="row">
             <div class="col-11"><br></div>
-            <div class="col"><a class="btn btn-primary mt-2 mb-2" href="#" role="button" data-bs-toggle="modal" data-bs-target="#tambahUnit">+ Tambah </a></div>  
+            <div class="col"><a class="btn btn-info mt-2 mb-2" href="#" role="button" data-bs-toggle="modal" data-bs-target="#tambahUnit">+ Tambah </a></div>  
             <div class="col"> </div>   
             <div class="col"><form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -150,7 +150,7 @@
                     <td>{{$un -> nama_unit}}</td>
                     <td>{{$un -> no_telp_unit}}</td>
                     <td>
-                        <a class="btn btn-warning" href="unit/editUnit/{{$un->id_unit}}" role="button" ><span data-feather="edit"></span></a>
+                        <a class="btn btn-info" href="unit/editUnit/{{$un->id_unit}}" role="button" ><span data-feather="edit"></span></a>
                         <a class="btn btn-danger" href="unit/delete/{{$un->id_unit}}" role="button"><span data-feather="trash-2"></span></a>
                     </td>
                     </tr>

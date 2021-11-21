@@ -101,7 +101,7 @@
     <div class="container">
         <div class="row">
             <div class="col-11"><br></div>
-            <div class="col"><a class="btn btn-primary mt-2 mb-2" href="#" role="button" data-bs-toggle="modal" data-bs-target="#tambahUnit">+ Tambah </a></div>
+            <div class="col"><a class="btn btn-info mt-2 mb-2" href="#" role="button" data-bs-toggle="modal" data-bs-target="#tambahUnit">+ Tambah </a></div>
             <div class="col"> </div>   
             <div class="col"><form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
@@ -146,7 +146,7 @@
                     <th scope="row">{{ $no++}}</th>
                     <td>{{$un -> nama_kategori}}</td>
                     <td>
-                        <a class="btn btn-warning" href="/kategori/editKategori/{{$un->id_kategori}}" role="button" ><span data-feather="edit"></span></a>
+                        <a class="btn btn-info" href="/kategori/editKategori/{{$un->id_kategori}}" role="button" ><span data-feather="edit"></span></a>
                         <a class="btn btn-danger" href="/kategori/delete/{{$un->id_kategori}}" role="button"><span data-feather="trash-2"></span></a>
                     </td>
                     </tr>
