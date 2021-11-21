@@ -11,7 +11,7 @@
 
 <!-- Fonts -->
 <link rel="dns-prefetch" href="//fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet"
+<link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
 
     <!-- Bootstrap core CSS -->
@@ -59,7 +59,7 @@
       <div class="position-sticky pt-3">
         <ul class="nav flex-column">
           <li class="nav-item">
-            <a class="nav-link " aria-current="page" href="/dashboard">
+            <a class="nav-link " aria-current="page" href="/admin">
             &nbsp&nbsp&nbsp<span data-feather="layers"></span>
               Dashboard
             </a>
@@ -104,7 +104,7 @@
         <div class="row">
             <div class="col-11"><br></div>
             <div class="col"><a class="btn btn-primary mt-2 mb-2" href="#" role="button" data-bs-toggle="modal" data-bs-target="#tambahPengguna">+ Tambah </a></div>
-            <div class="col"> </div>   
+            <div class="col"> </div>
             <div class="col"><form class="d-flex">
                 <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-success" type="submit">Search</button>
@@ -141,12 +141,12 @@
                         <label class="form-check-label" for="flexRadioDefault1">
                             Perempuan
                         </label><br>
-                    <label for="#">Hak Akses</label><br>
-                    <input class="form-check-input" type="radio" name="hak_akses" id="flexRadioDefault1" value="Admin">
+                    <label for="#">Role</label><br>
+                    <input class="form-check-input" type="radio" name="role" id="flexRadioDefault1" value="Admin">
                         <label class="form-check-label col-2" for="flexRadioDefault1">
                             Admin
                         </label>
-                    <input class="form-check-input" type="radio" name="hak_akses" id="flexRadioDefault1" value="Pengguna">
+                    <input class="form-check-input" type="radio" name="role" id="flexRadioDefault1" value="Pengguna">
                         <label class="form-check-label" for="flexRadioDefault1">
                             Pengguna
                         </label><br>
@@ -172,7 +172,7 @@
                     <th scope="col">Tgl Lahir</th>
                     <th scope="col">Jenis Kelamin</th>
                     <th scope="col">Telp</th>
-                    <th scope="col">Hak Akses</th>
+                    <th scope="col">Role</th>
                     <th scope="col">Gambar</th>
                     <th scope="col">Aksi</th>
                     </tr>
@@ -191,7 +191,7 @@
                     <td>{{$u -> tgl_lahir}}</td>
                     <td>{{$u -> jenis_kelamin}}</td>
                     <td>{{$u -> no_telp}}</td>
-                    <td>{{$u -> hak_akses}}</td>
+                    <td>{{$u -> role}}</td>
                     <td>{{$u -> gambar_user}}</td>
                     <td>
                         <a class="btn btn-warning" href="tambahPengguna/editPengguna/{{$u->email}}" role="button" ><span data-feather="edit"></span></a>

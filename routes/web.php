@@ -24,7 +24,7 @@ Route::group(['middleware' => ['auth','role:admin']],function(){
     Route::get('/admin', 'AdminController@index')->name('admin');
 });
 
-Route::get('/admin/dashboard', '\App\Http\Controllers\AdminController@index');
+Route::get('/admin', 'AdminController@index');
 
 Route::get('/dashboard', 'DashboardController@dashboard');
 Route::get('/tambahPengguna', 'TambahController@tambahPengguna');

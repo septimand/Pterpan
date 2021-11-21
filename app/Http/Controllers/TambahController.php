@@ -20,7 +20,7 @@ namespace App\Http\Controllers;
                 'no_telp' => $request -> no_telp,
                 'gambar_user' => $request -> gambar_user,
                 'password' => $request -> password,
-                'hak_akses' => $request -> hak_akses,
+                'role' => $request -> role,
 	        ]);
 
 	        return redirect('/tambahPengguna');
